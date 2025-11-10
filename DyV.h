@@ -4,39 +4,54 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
+#include <utility>
+#include <cstdlib>
+#include <ctime>
+
+
 
 int BusquedaBinaria(int x, const std::vector<int>& v, int ini, int fin) {
     if (ini > fin) {
         return -1; // No se encuentra
     }
 
-    int medio = (ini + fin) / 2;
+    int med = (ini + fin) / 2;
 
-    if (v[medio] == x) {
-        return medio;
-    } else if (v[medio] > x) {
-        return BusquedaBinaria(x, v, ini, medio - 1);
+    if (v[med] == x) {
+        return med;
+    } else if (v[med] > x) {
+        return BusquedaBinaria(x, v, ini, med - 1);
     } else {
-        return BusquedaBinaria(x, v, medio + 1, fin);
+        return BusquedaBinaria(x, v, med + 1, fin);
     }
 }
 
-// Para vectores ordenados de forma descendente
-int BusquedaBinaria_INV(int x, const std::vector<int>& v, int ini, int fin) {
-    if (ini > fin) {
-        return -1;
-    }
+int Partition(const std::vector<int>& V, int ini, int fin){
+         int x = V[fin]; //pivote
+         int i = ini-1;
+         int j;
+         for(j = ini; j<fin; j++){
+               if(V[j]<= x){
+                     std::swap(V[i], V[j]);
+                     i++;
+               }
+         }
+        std::swap(V[i], V[fin]);
+        return i;
 
-    int medio = (ini + fin) / 2;
+}
 
-    if (v[medio] == x) {
-        return medio;
-    } else if (v[medio] < x) {
-        return BusquedaBinaria_INV(x, v, ini, medio - 1);
-    } else {
-        return BusquedaBinaria_INV(x, v, medio + 1, fin);
+
+void QuickSort(const std::vector<int>& V, int ini, int fin){
+    if(ini < fin){
+        int pivot = Partition(V, ini, fin);
+        QuickSort(V, ini, pivot - 1);
+        QuickSort(V, pivot + 1, fin);
+
     }
 }
+
 
 #endif
 
