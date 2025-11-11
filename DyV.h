@@ -4,12 +4,6 @@
 
 #include <vector>
 #include <iostream>
-#include <algorithm>
-#include <utility>
-#include <cstdlib>
-#include <ctime>
-
-
 
 int BusquedaBinaria(int x, std::vector<int>& v, int ini, int fin) {
     if (ini > fin) {
