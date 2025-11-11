@@ -1,4 +1,3 @@
-// DyV.h
 #ifndef DYV_H
 #define DYV_H
 
@@ -7,7 +6,7 @@
 
 int BusquedaBinaria(int x, std::vector<int>& v, int ini, int fin) {
     if (ini > fin) {
-        return -1; // No se encuentra
+        return -1;
     }
 
     int med = (ini + fin) / 2;
