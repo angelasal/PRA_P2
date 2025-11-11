@@ -11,7 +11,7 @@
 
 
 
-int BusquedaBinaria(int x, const std::vector<int>& v, int ini, int fin) {
+int BusquedaBinaria(int x, std::vector<int>& v, int ini, int fin) {
     if (ini > fin) {
         return -1; // No se encuentra
     }
@@ -27,7 +27,7 @@ int BusquedaBinaria(int x, const std::vector<int>& v, int ini, int fin) {
     }
 }
 
-int Partition(const std::vector<int>& V, int ini, int fin){
+int Partition(std::vector<int>& V, int ini, int fin){
          int x = V[fin]; //pivote
          int i = ini-1;
          int j;
@@ -43,7 +43,7 @@ int Partition(const std::vector<int>& V, int ini, int fin){
 }
 
 
-void QuickSort(const std::vector<int>& V, int ini, int fin){
+void QuickSort(std::vector<int>& V, int ini, int fin){
     if(ini < fin){
         int pivot = Partition(V, ini, fin);
         QuickSort(V, ini, pivot - 1);
